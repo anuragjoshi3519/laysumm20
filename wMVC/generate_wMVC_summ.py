@@ -195,12 +195,12 @@ def generate_wMVC_summ(input_path,reference_path,output_path,limit):
 
         write_summary(tops, sent_tokens, limit, doc, output_path)
         
-def main():
-    root_path = "../Data/Input-wMVC/"
+def generate_wMVC():
+    root_path = "Data/Input-wMVC/"
     for section in os.listdir(root_path):        
         input_path = root_path+section+'/'
         reference_path = input_path
-        output_path = f"../Data/Input-BART/{section}/"
+        output_path = f"Data/Input-BART/{section}/"
         if not os.path.isdir(output_path):
             os.mkdir(output_path)
         
@@ -208,7 +208,4 @@ def main():
             generate_wMVC_summ(input_path,reference_path,output_path,150)
         else:
             generate_wMVC_summ(input_path,reference_path,output_path,170)
-            
-if __name__=='__main__':
-    main()
             

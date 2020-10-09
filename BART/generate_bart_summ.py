@@ -38,7 +38,7 @@ def create_summaries(src_path, dest_path, model_bart, tokenizer_bart):
             if not doc.startswith('.'):
                 with open(src_path+doc,'r') as f:
                     text = f.read()
-                    print(f"Doc#{count}")
+                    print(f"\n\nDoc#{count}")
                     print(f"\nGenerating summary for {doc} | Input length: {len(text.split())} ",end="|")
                     summary = get_summary(text, model_bart, tokenizer_bart)
                     summary = ' \n\n'.join([token for token in sent_tokenize(summary)])
@@ -52,11 +52,7 @@ def generate_bart_summ():
     model_bart = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
     tokenizer_bart = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
     
-    for section_folder in os.listdir("../Data/Input-BART"):
+    for section_folder in os.listdir("Data/Input-BART"):
         if not section_folder.startswith('.'):
-            create_summaries(src_path = f"../Data/Input-BART/{section_folder}/",dest_path=f"../Data/Section-wise-summaries/bart_{section_folder}/",model_bart = model_bart, tokenizer_bart=tokenizer_bart)
-            
-            
-if __name__=='__main__':
-    generate_bart_summ()
+            create_summaries(src_path = f"Data/Input-BART/{section_folder}/",dest_path=f"Data/Section-wise-summaries/bart_{section_folder}/",model_bart = model_bart, tokenizer_bart=tokenizer_bart)
     

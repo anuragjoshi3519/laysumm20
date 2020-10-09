@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from preprocess_data import *
+from Utilities.preprocess_data import *
 from nltk import sent_tokenize
 
 def removeLines(text):
@@ -24,7 +24,7 @@ def addNone(text):
         return text
             
 def makeSectionFolders():
-    df = pd.read_csv('../Data/Sections-DataFrame/sections.csv',index_col='ID')
+    df = pd.read_csv('Data/Sections-DataFrame/sections.csv',index_col='ID')
 
     for section in ['Abstract',"Conclusions","Discussion","Introduction"]:
 
@@ -36,15 +36,15 @@ def makeSectionFolders():
         section_df.loc[:,section] = section_df.loc[:,section].apply(preprocess)
         section_df.loc[:,section] = section_df.loc[:,section].apply(addNone)
         
-        if not os.path.isdir(f"../Data/Input-wMVC/{section}"):
-            os.mkdir(f"../Data/Input-wMVC/{section}")
+        if not os.path.isdir(f"Data/Input-wMVC/{section}"):
+            os.mkdir(f"Data/Input-wMVC/{section}")
 
         for idx,inputs in zip(section_df.index,section_df.loc[:,section]):
-            savefile(inputs,f"../Data/Input-wMVC/{section}/{idx}.txt")
+            savefile(inputs,f"Data/Input-wMVC/{section}/{idx}.txt")
 
 def getSectionDataFrames():
     # folder must contain FULLTEXT & ABSTRACT files for each doc in it
-    testset_path = '../Data/Input-Data/'
+    testset_path = 'Data/Input-Data/'
 
     testset_data = {
         'ID':[],
@@ -82,9 +82,8 @@ def getSectionDataFrames():
                             for _ in range(8):
                                 f.readline()
                             testset_data['Full_Text'].append(f.read())
-
+                            
     testdata_df = pd.DataFrame(testset_data)
-
 
     # Getting separate sections from FULLTEXT
 
@@ -129,11 +128,9 @@ def getSectionDataFrames():
     # saving dataframe
     testdata_df.index = testdata_df.ID
     testdata_df.drop('ID',axis = 1,inplace=True)
-    testdata_df.to_csv('../Data/Sections-DataFrame/sections.csv')
+    testdata_df.to_csv('Data/Sections-DataFrame/sections.csv')
     
 def prepareData():
+
     getSectionDataFrames()
     makeSectionFolders()
-    
-if __name__=='__main__':
-    prepareData()
