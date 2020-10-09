@@ -54,5 +54,6 @@ def generate_bart_summ():
     
     for section_folder in os.listdir("Data/Input-BART"):
         if not section_folder.startswith('.'):
+            print(f'\n{section_folder}::\n')
             create_summaries(src_path = f"Data/Input-BART/{section_folder}/",dest_path=f"Data/Section-wise-summaries/bart_{section_folder}/",model_bart = model_bart, tokenizer_bart=tokenizer_bart)
     
