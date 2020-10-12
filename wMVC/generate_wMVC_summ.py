@@ -3,7 +3,7 @@ from os.path import isdir
 from networkx import Graph
 from networkx.algorithms.approximation import min_weighted_vertex_cover
 
-from utils import get_sentences_with_factors, document_word_count, compute_entailment, compute_threshold, \
+from wMVC.utils import get_sentences_with_factors, document_word_count, compute_entailment, compute_threshold, \
     create_edge_set, write_summary
 
 
