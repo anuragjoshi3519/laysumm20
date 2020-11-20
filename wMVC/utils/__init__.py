@@ -82,6 +82,8 @@ def compute_entailment(sentence_tokens: list) -> ndarray:
 def compute_threshold(dist: ndarray, partition: float) -> float:
     dist_nonzero = array(dist.flatten())
     dist_nonzero = list(filter(lambda x: x > 1e-6, dist_nonzero))
+    if len(dist_nonzero) <= len(dist):
+        return 0.0
     dist_nonzero.sort()
     dist_nonzero = dist_nonzero[:len(dist_nonzero) - len(dist)]
     return quantile(dist_nonzero, partition)
