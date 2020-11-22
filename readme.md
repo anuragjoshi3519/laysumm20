@@ -47,7 +47,7 @@ pip3 install virtualenv
 virtualenv -p /usr/bin/python3 env
 source env/bin/activate
 pip3 install -r requirements.txt
-python3 -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
+python3 -c "from nltk import download; download(['punkt', 'stopwords'])"
 ```
 
 2. Add test documents (full_texts & abstracts for every document) in Data/Input-Data (first remove default sample_ABSTRACT.txt and sample_FULLTEXT.txt files)
