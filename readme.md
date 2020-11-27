@@ -29,7 +29,6 @@ The task is to create non-technical summaries of scholarly text.
 
     5 requirements.txt
 
-
 ### Generate Laysumm Summaries:
 
 #### Steps:
@@ -61,12 +60,12 @@ python3 generateLaysumm.py
 
 **Generated summaries can be found in Data/Merged-final folder.**
 
+### Cite:
 
-# Cite
+If you find the work useful, please cite it as:
 
-If you find the work useful please cite it as: <br/>
-
-BibTeX: <br/>
+```
+BibTeX:
 @inproceedings{chaturvedi2020divide,
   title={Divide and Conquer: From Complexity to Simplicity for Lay Summarization},
   author={Chaturvedi, Rochana and Dhani, Jaspreet Singh and Joshi, Anurag and Khanna, Ankush and Tomar, Neha and Duari, Swagata and Khurana, Alka and Bhatnagar, Vasudha and others},
@@ -74,3 +73,4 @@ BibTeX: <br/>
   pages={344--355},
   year={2020}
 }
+```
