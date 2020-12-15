@@ -65,8 +65,7 @@ python3 generateLaysumm.py
 If you find the work useful, please cite it as:
 
 BibTeX:
-
-```
+```bibtex
 @inproceedings{chaturvedi-etal-2020-divide,
     title = "Divide and Conquer: From Complexity to Simplicity for Lay Summarization",
     author = "Chaturvedi, Rochana  and
